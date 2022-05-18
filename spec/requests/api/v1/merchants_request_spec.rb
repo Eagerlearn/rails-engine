@@ -23,7 +23,7 @@ describe "Merchants API" do
     end
   end
 
-  xit "can get one merchant by its id" do
+  it "can get one merchant by its id" do
     id = create(:merchant).id
 
     get "/api/v1/merchants/#{id}"
