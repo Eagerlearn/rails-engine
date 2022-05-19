@@ -1,22 +1,24 @@
 require 'rails_helper'
 
-describe "Merchant Items API" do
-  it "sends a list of items for a specific merchant" do
+describe "Items API" do
+  it "sends a list of items" do
     merchant1 = create(:merchant)
+    merchant2 = create(:merchant)
 
-    merchant_items_list = create_list(:item, 3, merchant_id: merchant1.id)
+    merchant_items_list1 = create_list(:item, 3, merchant_id: merchant1.id)
+    merchant_items_list2 = create_list(:item, 6, merchant_id: merchant2.id)
 
-    get "/api/v1/merchants/#{merchant1.id}/items"
+    get '/api/v1/items'
 
     expect(response).to be_successful
 
     response_body = JSON.parse(response.body, symbolize_names: true)
 
-    merchant_items = response_body[:data]
+    items = response_body[:data]
 
-    expect(merchant_items.count).to eq(3)
+    expect(items.count).to eq(9)
 
-    merchant_items.each do |item|
+    items.each do |item|
       expect(item).to have_key(:id)
       expect(item[:id]).to be_a(String)
       expect(item[:type]).to eq('item')
