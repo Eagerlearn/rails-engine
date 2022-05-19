@@ -4,6 +4,8 @@ Rails.application.routes.draw do
     namespace :v1 do
       get '/items', to: 'items#index'
       get '/items/:id', to: 'items#show'
+      put '/items/:id', to: 'items#update'
+      post '/items', to: 'items#create'
       get '/merchants', to: 'merchants#index'
       get '/merchants/:id', to: 'merchants#show'
       get '/merchants/:id/items', to: 'merchant_items#index', as: :specific_merchant_items
