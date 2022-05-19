@@ -7,10 +7,12 @@ Rails.application.routes.draw do
       put '/items/:id', to: 'items#update'
       post '/items', to: 'items#create'
       delete '/items/:id', to: 'items#destroy'
-      
+
+      get '/items/:id/merchant', to: 'item_merchant#index'
+
       get '/merchants', to: 'merchants#index'
       get '/merchants/:id', to: 'merchants#show'
-      get '/merchants/:id/items', to: 'merchant_items#index', as: :specific_merchant_items
+      get '/merchants/:id/items', to: 'merchant_items#index'
     end
   end
 end
