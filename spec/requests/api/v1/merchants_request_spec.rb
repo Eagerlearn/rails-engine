@@ -28,6 +28,8 @@ describe "Merchants API" do
 
     get "/api/v1/merchants/#{id}"
 
+    expect(response).to be_successful
+
     response_body = JSON.parse(response.body, symbolize_names: true)
 
     merchant = response_body[:data]

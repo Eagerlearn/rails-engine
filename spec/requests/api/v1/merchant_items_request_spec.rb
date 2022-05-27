@@ -19,7 +19,7 @@ describe "Merchant Items API" do
     merchant_items.each do |item|
       expect(item).to have_key(:id)
       expect(item[:id]).to be_a(String)
-      expect(item[:type]).to eq('item')
+      expect(item[:type]).to eq('merchant_item')
       expect(item[:attributes]).to have_key(:name)
       expect(item[:attributes][:name]).to be_a(String)
       expect(item[:attributes]).to have_key(:description)
